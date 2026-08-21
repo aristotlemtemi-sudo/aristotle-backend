@@ -62,4 +62,4 @@ CREATE TABLE IF NOT EXISTS loan_agreements (
     synced_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_loan_local_id ON loan_agreements(local_id);
+CREATE INDEX IF NOT EXISTS idx_loan_local_id ON loan_agreements(local_id);
