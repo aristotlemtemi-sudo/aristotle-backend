@@ -1,6 +1,16 @@
 -- PostgreSQL Database Initialization Script for Aristotle Enterprises
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+-- Loans table for loan requests (used by Admin Dashboard & Ledger)
+CREATE TABLE IF NOT EXISTS loans (
+  id SERIAL PRIMARY KEY,
+  borrower_name VARCHAR(255) NOT NULL,
+  amount NUMERIC(12, 2) NOT NULL,
+  purpose TEXT,
+  status VARCHAR(50) DEFAULT 'PENDING',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS loan_agreements (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     local_id VARCHAR(100) UNIQUE NOT NULL, -- Device generated offline UUID
